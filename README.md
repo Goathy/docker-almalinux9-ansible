@@ -2,7 +2,7 @@
 
 [![Build](https://github.com/Goathy/docker-almalinux9-ansible/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/Goathy/docker-almalinux9-ansible/actions/workflows/build.yml)
 
-AlmaLinux 10 Docker container for Ansible playbook and role testing.
+AlmaLinux 9 Docker container for Ansible playbook and role testing.
 
 ## Tags
 
