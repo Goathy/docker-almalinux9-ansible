@@ -39,6 +39,11 @@ jobs:
     permissions:
       packages: write
 
+
+    env:
+      REGISTRY: ghcr.io
+      IMAGE_NAME: ${{ github.repository }}
+
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
       - uses: docker/setup-qemu-action@ce360397dd3f832beb865e1373c09c0e9f86d70a
@@ -47,11 +52,11 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-action@b45d80f862d83dbcd57f89517bcf500b2ab88fb2
         with:
-          registry: ghcr.io
+          registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push image.
         run: |
-          docker image build . --tag ghcr.io/${{ secrets.GHCR_USERNAME }}/${{ vars.IMAGE_NAME }}:latest
-          docker image push ghcr.io/${{ secrets.GHCR_USERNAME }}/${{ vars.IMAGE_NAME }}:latest
+          docker image build . --tag ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
+          docker image push ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
