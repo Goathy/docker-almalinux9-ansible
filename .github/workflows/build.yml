@@ -58,5 +58,5 @@ jobs:
 
       - name: Build and push image.
         run: |
-          docker image build . --tag ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
-          docker image push ${{ env.REGISTRY }}/${{ github.actor }}/${{ env.IMAGE_NAME }}:latest
+          docker image build . --tag ${{ env.REGISTRY }}/${{ secrets.USERNAME }}/${{ env.IMAGE_NAME }}:latest
+          docker image push ${{ env.REGISTRY }}/${{ secrets.USERNAME }}/${{ env.IMAGE_NAME }}:latest
